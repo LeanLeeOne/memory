@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <h1><a href="http://leanlee.top/notes/index/01、Java">Java</a></h1>
     <h1><a href="http://leanlee.top/notes/index/02、Concurrent">Concurrent</a></h1>
     <h1><a href="http://leanlee.top/notes/index/03、JVM">JVM</a></h1>
@@ -21,6 +21,13 @@ export default {
 </script>
 
 <style scoped>
+.main {
+  padding-top: 3em;
+}
+h1 {
+  margin: 0;
+  line-height: 2em;
+}
 a {
   color: LemonChiffon;
   text-decoration: none;

@@ -41,6 +41,15 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = "檬胧 | " + to.meta.title;
   }
+
+  // 日出
+  let style = document.getElementById("app").style;
+  if (to.path == "/notes") {
+    style.backgroundColor = "#666";
+  } else {
+    style.backgroundColor = "black";
+  }
+
   next()
 });
 
