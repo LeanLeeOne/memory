@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img id="logo" alt="Vue logo" src="../assets/moon.png">
+    <img alt="Vue logo" src="../assets/moon.png">
     <h1 hidden>{{ msg }}</h1>
     <input placeholder="搜索框" hidden>
     <ul>
@@ -61,9 +61,6 @@ export default {
 
 <style scoped>
 @import "https://at.alicdn.com/t/font_2864663_7j50opb9ofa.css";
-#logo {
-  height: 800px;
-}
 h3 {
   margin: 40px 0 0;
 }
