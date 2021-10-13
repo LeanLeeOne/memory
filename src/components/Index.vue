@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <img id="logo" alt="Vue logo" src="../assets/moon.png">
     <h1 hidden>{{ msg }}</h1>
     <input placeholder="搜索框" hidden>
     <ul title="高斯模糊、响应式布局">
@@ -35,8 +36,7 @@
         </a>
       </li>
       <li>
-        <a href="wechat.leanlee.top"
-           target="_blank"
+        <a href="/wechat/"
            rel="noopener">
           <i class="iconfont icon-weixin"></i>
           <span>Wechat</span>
@@ -49,17 +49,17 @@
 
 <script>
 export default {
-  name: 'Index',
-  props: {
-    msg: String
-  }
+    name: 'Index',
+    props: {
+        msg: String
+    }
 }
 </script>
 
 <style scoped>
 @import "https://at.alicdn.com/t/font_2864663_7j50opb9ofa.css";
-.main {
-
+#logo {
+  height: 800px;
 }
 h3 {
   margin: 40px 0 0;
@@ -75,16 +75,17 @@ li {
   padding: 10px;
   display: inline-block;
 }
-li i{
+li i {
   font-size: 35px;
   transition: all 0.3s;
 }
-li i:hover{
+li i:hover {
   transform: scale(1.2);
 }
-a {
+a,
+router-link {
   color: LemonChiffon;
-  text-decoration:none;
+  text-decoration: none;
   height: 100%;
   font-size: 13px;
   display: flex;
@@ -98,10 +99,11 @@ a {
   transition: color .25s ease-out .1s;
   text-shadow: 2px 2px 4px #00000070;
 }
-a:hover{
+a:hover,
+router-link:hover {
   color: limegreen;
 }
-.beian{
+.beian {
   width: 100%;
   height: 1em;
   position: fixed;
