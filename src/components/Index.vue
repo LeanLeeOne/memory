@@ -61,12 +61,22 @@ export default {
 
 <style scoped>
 @import "https://at.alicdn.com/t/font_2864663_7j50opb9ofa.css";
+
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 h3 {
   margin: 40px 0 0;
 }
 ul {
+  width: 500px;
   list-style-type: none;
+  margin: 0 calc(50% - 250px);
   padding: 0;
+  position: absolute;
+  bottom: 60px;
 }
 li {
   width: 60px;
@@ -116,7 +126,7 @@ a.wechat:hover {
 .beian {
   width: 100%;
   height: 1em;
-  position: fixed;
+  position: absolute;
   bottom: 20px;
   left: 0;
 }
