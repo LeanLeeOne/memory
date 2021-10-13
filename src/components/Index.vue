@@ -5,10 +5,10 @@
     <input placeholder="搜索框" hidden>
     <ul>
       <li>
-        <a href="/blog/"
+        <a @click="jump2('/notes')"
            class="blog">
           <i class="iconfont icon-ningmeng"></i>
-          <span>Blog</span>
+          <span>Notes</span>
         </a>
       </li>
       <li>
@@ -39,7 +39,7 @@
         </a>
       </li>
       <li>
-        <a href="/wechat/"
+        <a @click="jump2('/wechat')"
            class="wechat">
           <i class="iconfont icon-weixin"></i>
           <span>Wechat</span>
@@ -55,6 +55,13 @@ export default {
   name: 'Index',
   props: {
     msg: String
+  },
+  methods: {
+    jump2(url) {
+      this.$router.push({
+        path: url,
+      })
+    }
   }
 }
 </script>

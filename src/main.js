@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 import Wechat from "@/components/Wechat";
-import Blog from "@/components/Blog";
+import Notes from "@/components/Notes";
 import Index from "@/components/Index";
 
 Vue.config.productionTip = false;
@@ -20,8 +20,8 @@ const router = new VueRouter({
       }
     },
     {
-      path: "/blog/",
-      component: Blog,
+      path: "/notes/",
+      component: Notes,
       meta: {
         title: "博客"
       }
