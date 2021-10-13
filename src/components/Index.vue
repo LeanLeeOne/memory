@@ -6,7 +6,7 @@
       <li>
         <a href="http://blog.leanlee.top"
            rel="noopener">
-          <i class="iconfont ic-blog"></i>
+          <i class="iconfont icon-ningmeng"></i>
           <span>Blog</span>
         </a>
       </li>
@@ -14,7 +14,7 @@
         <a href="https://www.cnblogs.com/lean-lee/"
            target="_blank"
            rel="noopener">
-          <i class="iconfont ic-cnblogs"></i>
+          <i class="iconfont icon-cnblogs"></i>
           <span>CNBlogs</span>
         </a>
       </li>
@@ -22,7 +22,7 @@
         <a href="https://github.com/LeanLeeOne/"
            target="_blank"
            rel="noopener">
-          <i class="iconfont ic-github"></i>
+          <i class="iconfont icon-github"></i>
           <span>Github</span>
         </a>
       </li>
@@ -30,7 +30,7 @@
         <a href="https://space.bilibili.com/13913026"
            target="_blank"
            rel="noopener">
-          <i class="iconfont ic-bilibili"></i>
+          <i class="iconfont icon-bilibili"></i>
           <span>Bilibili</span>
         </a>
       </li>
@@ -38,12 +38,12 @@
         <a href="wechat.leanlee.top"
            target="_blank"
            rel="noopener">
-          <i class="iconfont ic-wechat"></i>
+          <i class="iconfont icon-weixin"></i>
           <span>Wechat</span>
         </a>
       </li>
     </ul>
-    <a class="beian" href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备18052178号-1</a>
+    <a class="beian" href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备18052178号</a>
   </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/font.css";
+@import "https://at.alicdn.com/t/font_2864663_7j50opb9ofa.css";
 .main {
 
 }
