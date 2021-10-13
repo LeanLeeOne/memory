@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img style="height: 800px" alt="Vue logo" src="./assets/logo.png">
+    <img id="logo" alt="Vue logo" src="./assets/moon.png">
     <Index msg="檬胧"/>
   </div>
 </template>
@@ -26,5 +26,8 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+#logo{
+  height: 800px;
 }
 </style>
