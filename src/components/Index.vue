@@ -1,6 +1,7 @@
 <template>
   <div class="main">
     <img alt="Vue logo" src="../assets/moon.png">
+    <MoonBack></MoonBack>
     <h1 hidden>{{ msg }}</h1>
     <input placeholder="搜索框" hidden>
     <ul>
@@ -60,8 +61,13 @@
 </template>
 
 <script>
+import MoonBack from "@/components/MoonBack";
+
 export default {
   name: 'Index',
+  components: {
+    MoonBack
+  },
   props: {
     msg: String
   },
