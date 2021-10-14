@@ -23,7 +23,7 @@ const router = new VueRouter({
       path: "/notes/",
       component: Notes,
       meta: {
-        title: "博客"
+        title: "笔记"
       }
     },
     {
