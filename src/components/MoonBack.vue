@@ -5,6 +5,10 @@
     <div class="star" style="top:50px;right:120px;"></div>
     <div class="star" style="top:190px;left:20px;"></div>
     <div class="star" style="top:220px;left:50px;"></div>
+    <div class="star" style="bottom:190px;left:20px;"></div>
+    <div class="star" style="bottom:220px;left:50px;"></div>
+    <div class="star" style="bottom:190px;right:120px;"></div>
+    <div class="star" style="bottom:220px;right:150px;"></div>
   </div>
 </template>
 
