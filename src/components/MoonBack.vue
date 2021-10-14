@@ -32,7 +32,8 @@ export default {
 /*背景*/
 
 /*天狗*/
-.moonback::after {
+/*母天狗*/
+.moonback::before {
   content: " ";
   display: block;
   position: absolute;
@@ -40,8 +41,22 @@ export default {
   height: 700px;
   background-color: #000;
   border-radius: 50%;
+  box-shadow: 0 0 100px 100px #5555;
   animation: 60s dog linear infinite;
 }
+/*母天狗*/
+/*公天狗*/
+.moonback::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  box-shadow: 0 0 50px 50px #000;
+  animation: 60s dog linear infinite;
+}
+/*公天狗*/
 @keyframes dog {
   0% {
     top: calc(56px - 693px);
@@ -60,7 +75,7 @@ export default {
   height: 693px;
   margin: 60px auto;
   border-radius: 50%;
-  box-shadow: 0 0 50px 50px #dbd86a;
+  box-shadow: 0 0 50px 50px #b9ccdb;
   animation-name: lightHalo;
   animation-duration: 60s;
   animation-timing-function: linear;
@@ -68,11 +83,20 @@ export default {
   animation-direction: alternate;
 }
 @keyframes lightHalo {
-  from {
+  0% {
     opacity: 0.4;
   }
-  to {
+  30% {
+    opacity: 0.1;
+  }
+  50% {
     opacity: 0;
+  }
+  70% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.4;
   }
 }
 /*光环*/
