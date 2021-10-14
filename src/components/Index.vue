@@ -5,6 +5,15 @@
     <input placeholder="搜索框" hidden>
     <ul>
       <li>
+        <a href="http://leanlee.top/notes/index"
+           class="blog"
+           target="_blank"
+           rel="noopener">
+          <i class="iconfont icon-ningmeng"></i>
+          <span>Notes</span>
+        </a>
+      </li>
+      <li>
         <a @click="jump2('/notes')"
            class="blog">
           <i class="iconfont icon-ningmeng"></i>
