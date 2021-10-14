@@ -38,7 +38,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
-  if (to.meta.title) {
+  if (to.path == "/") {
+    Time_Waits_For_No_Oen();
+  } else if (to.meta.title) {
     document.title = "檬胧 | " + to.meta.title;
   }
 
@@ -57,3 +59,14 @@ new Vue({
   render: h => h(App),
   router
 }).$mount('#app');
+
+function Time_Waits_For_No_Oen() {
+  let words = "檬胧 | Time waits for no one";
+  let i = 3;
+  let id = setInterval(() => {
+    document.title = words.slice(0, ++i);
+    if (i >= words.length) {
+      clearInterval(id);
+    }
+  }, 50);
+}
