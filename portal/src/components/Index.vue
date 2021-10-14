@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import MoonBack from "@/components/MoonBack";
+import MoonBack from "./MoonBack";
 
 export default {
   name: 'Index',
