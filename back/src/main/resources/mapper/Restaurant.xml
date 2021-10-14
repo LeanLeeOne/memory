@@ -5,7 +5,7 @@
 <mapper namespace="com.leanlee.memory.back.mapper.RestaurantMapper">
 
     <select id="query" resultType="com.leanlee.memory.back.entity.Restaurant">
-        SELECT id, name, total, guests
+        SELECT id, name, total, guests, timestamp, address, longitude, latitude, summary, branch
         FROM restaurant t
         <where>
             <if test="id != null and id != ''">

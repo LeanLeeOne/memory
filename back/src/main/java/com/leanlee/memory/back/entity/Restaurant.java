@@ -16,6 +16,7 @@ public class Restaurant {
 	private String longitude;
 	private String latitude;
 	private String summary;
+	private boolean branch;
 
 	public String getId() {
 		return id;
@@ -87,5 +88,13 @@ public class Restaurant {
 
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+	public boolean isBranch() {
+		return branch;
+	}
+
+	public void setBranch(boolean branch) {
+		this.branch = branch;
 	}
 }
