@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import BaiduMap from 'vue-baidu-map'
+import axios from 'axios'
+import qs from 'qs'
 import App from './App.vue';
-import Wechat from "./components/Wechat";
-import Notes from "./components/Notes";
-import Index from "./components/Index";
+import Wechat from "@/components/Wechat";
+import Notes from "@/components/Notes";
+import Index from "@/components/Index";
 
 Vue.config.productionTip = false;
 
