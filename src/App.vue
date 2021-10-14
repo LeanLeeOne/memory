@@ -19,6 +19,10 @@ body{
   height: 100%;
   margin: 0;
 }
+.main {
+  width: 100%;
+  height: 100%;
+}
 #app {
   height: 100%;
   color: LemonChiffon;

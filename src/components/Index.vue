@@ -85,8 +85,6 @@ export default {
 @import "https://at.alicdn.com/t/font_2864663_8ld2a3y8d18.css";
 
 .main {
-  width: 100%;
-  height: 100%;
   position: relative;
 }
 h3 {
