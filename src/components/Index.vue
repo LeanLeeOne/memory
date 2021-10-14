@@ -6,10 +6,10 @@
     <ul>
       <li>
         <a href="http://leanlee.top/notes/index"
-           class="blog"
+           class="notes"
            target="_blank"
            rel="noopener">
-          <i class="iconfont icon-ningmeng"></i>
+          <i class="iconfont icon-gangbi"></i>
           <span>Notes</span>
         </a>
       </li>
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style scoped>
-@import "https://at.alicdn.com/t/font_2864663_7j50opb9ofa.css";
+@import "https://at.alicdn.com/t/font_2864663_8ld2a3y8d18.css";
 
 .main {
   width: 100%;
@@ -97,7 +97,6 @@ ul {
 li {
   width: 60px;
   height: 60px;
-  margin: 0 10px;
   padding: 10px;
   display: inline-block;
 }
@@ -124,20 +123,31 @@ a {
   transition: color .25s ease-out .1s;
   text-shadow: 2px 2px 4px #00000070;
 }
-a.blog:hover {
-  color: #f9f967;
+a.notes:hover span {
+  color: #999;
 }
-a.cnblogs:hover {
+a.lemon:hover span {
+  color: #ead050;
+}
+a.cnblogs:hover span {
   color: #1296db;
 }
-a.github:hover {
+a.github:hover span {
   color: #3e75c3;
 }
-a.bilibili:hover {
+a.bilibili:hover span {
   color: #1296db;
 }
-a.wechat:hover {
+a.wechat:hover span {
   color: #09bb07;
+}
+a.notes:hover span,
+a.lemon:hover span,
+a.cnblogs:hover span,
+a.github:hover span,
+a.bilibili:hover span,
+a.wechat:hover span {
+  font-weight: bold;
 }
 .beian {
   width: 100%;
