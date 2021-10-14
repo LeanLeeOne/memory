@@ -40,12 +40,12 @@ export default {
 }
 @keyframes dog {
   0% {
-    left: -500px;
-    top: -500px;
+    top: calc(56px - 693px);
+    left: calc(50% - 688px - 344px);
   }
   100% {
-    left: 800px;
-    top: 550px;
+    top: calc(56px + 693px);
+    left: calc(50% + 344px);
   }
 }
 /*天狗*/
