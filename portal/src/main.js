@@ -4,13 +4,18 @@ import BaiduMap from 'vue-baidu-map'
 import axios from 'axios'
 import qs from 'qs'
 import App from './App.vue';
-import Wechat from "@/components/Wechat";
-import Notes from "@/components/Notes";
 import Index from "@/components/Index";
+import Notes from "@/components/Notes";
+import Map from "@/components/Map";
+import Wechat from "@/components/Wechat";
 
 Vue.config.productionTip = false;
+Vue.prototype.$axios = axios;
 
 Vue.use(VueRouter);
+Vue.use(BaiduMap, {
+  ak: 'M076MNMLZmNDOlsP1vsDkKTNSjn3qBgt'
+});
 
 const router = new VueRouter({
   mode: "history",
@@ -27,6 +32,13 @@ const router = new VueRouter({
       component: Notes,
       meta: {
         title: "笔记"
+      }
+    },
+    {
+      path: "/map/",
+      component: Map,
+      meta: {
+        title: "地图"
       }
     },
     {
@@ -56,6 +68,20 @@ router.beforeEach((to, from, next) => {
   }
 
   next()
+});
+
+
+// axios.defaults.baseURL = '/api';
+// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+  // 参数格式转换
+  if (config.method == "post") {
+    config.data = qs.stringify(config.data);
+  }
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
 });
 
 new Vue({

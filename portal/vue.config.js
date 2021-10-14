@@ -4,6 +4,15 @@ module.exports = {
   devServer: {
     // 端口号
     port: 80,
+    proxy: {
+      "/api/": {
+        target: "http://leanlee.top/",
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
   },
   // 输出文件目录
   outputDir: 'portal'

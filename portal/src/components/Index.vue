@@ -15,10 +15,10 @@
         </a>
       </li>
       <li>
-        <a @click="jump2('/notes')"
-           class="blog">
-          <i class="iconfont icon-ningmeng"></i>
-          <span>Notes</span>
+        <a @click="jump2('/map')"
+           class="map">
+          <i class="iconfont icon-lemon1"></i>
+          <span>Lemon</span>
         </a>
       </li>
       <li>
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import MoonBack from "./MoonBack";
+import MoonBack from "@/components/MoonBack";
 
 export default {
   name: 'Index',
