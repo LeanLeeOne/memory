@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <img alt="Vue logo" src="../assets/moon.png">
-    <MoonBack></MoonBack>
+    <img class="moon" alt="Moon" src="../assets/moon.png">
+    <MoonBack v-if="enough"></MoonBack>
     <h1 hidden>{{ msg }}</h1>
     <input placeholder="搜索框" hidden>
     <ul>
@@ -71,6 +71,18 @@ export default {
   props: {
     msg: String
   },
+  data() {
+    return {
+      enough: true
+    }
+  },
+  mounted() {
+    this.enough = window.innerWidth > 800;
+    let that = this;
+    window.onresize = () => {
+      that.enough = window.innerWidth > 800;
+    }
+  },
   methods: {
     jump2(url) {
       this.$router.push({
@@ -87,8 +99,9 @@ export default {
 .main {
   position: relative;
 }
-h3 {
-  margin: 40px 0 0;
+.moon {
+  width: 100%;
+  max-width: 800px;
 }
 ul {
   width: 500px;
