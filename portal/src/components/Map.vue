@@ -84,7 +84,7 @@ export default {
       }, 100);
     },
     setCenter(lng, lat, zoom) {
-      zoom || (zoom = 14);
+      zoom || (zoom = 16);
       this.center.lng = lng;
       this.center.lat = lat;
       this.zoom = zoom;
