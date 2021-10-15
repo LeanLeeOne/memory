@@ -1,6 +1,10 @@
 <template>
   <div class="main">
-    <baidu-map class="map" :center="center" :zoom="zoom" @ready="resetMap">
+    <baidu-map class="map"
+               :center="center"
+               :zoom="zoom"
+               :scroll-wheel-zoom="true"
+               @ready="resetMap">
       <bm-marker v-for="(r, i) in restaurants" :key="'p-'+r.id"
                  :position="{lng:r.longitude,lat:r.latitude}">
         <bm-label :content="(i+1)+'.'+r.name"
