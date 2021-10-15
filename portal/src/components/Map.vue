@@ -66,7 +66,7 @@ export default {
     Restaurant
   },
   mounted() {
-    this.drawRecent();
+    this.drawList();
     this.drawAllSite();
   },
   methods: {
@@ -83,9 +83,15 @@ export default {
       this.center.lat = lat;
       this.zoom = zoom;
     },
-    drawRecent() { // 最近
+    drawList(offset, limit) { // 最近
       this.$axios
-        .get("/api/restaurant/query/")
+        .get("/api/restaurant/query/", {
+            params: {
+              limit: limit,
+              offset: offset
+            }
+          }
+        )
         .then(response => {
           this.restaurants = response.data;
         });
