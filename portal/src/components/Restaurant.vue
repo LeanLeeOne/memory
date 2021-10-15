@@ -1,6 +1,11 @@
 <template>
   <div class="item">
-    <div class="name"><span class="index">{{index+1}}</span>{{name}}</div>
+    <div class="name">
+      <span class="index">{{index+1}}</span>
+      <a :href="url"
+         :title="url"
+      >{{name}}</a>
+    </div>
     <div class="total">￥{{total}}，{{guests}}人，人均: ￥{{avg}}</div>
     <div class="timestamp">{{timestamp}}</div>
     <div class="address"><i class="iconfont icon-"></i>{{address}}</div>
@@ -19,7 +24,8 @@ export default {
     guests: Number,
     timestamp: String,
     address: String,
-    summary: String
+    summary: String,
+    url: String
   },
   data() {
     return {
@@ -57,6 +63,10 @@ export default {
 .name {
   font-size: 18px;
   margin-bottom: 5px;
+}
+.name a:hover {
+  color: #09bb07;
+  cursor: pointer;
 }
 .timestamp,
 .address {

@@ -16,7 +16,8 @@
                   :guests="r.guests*1"
                   :timestamp="r.timestamp"
                   :address="r.address"
-                  :summary="r.summary">
+                  :summary="r.summary"
+                  :url="r.url">
       </Restaurant>
     </div>
   </div>

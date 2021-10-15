@@ -8,15 +8,26 @@ package com.leanlee.memory.back.entity;
 public class Restaurant {
 
 	private String id;
+	// 饭店名称
 	private String name;
+	// 花费
 	private String total;
+	// 就餐人数
 	private String guests;
+	// 时间
 	private String timestamp;
+	// 地址
 	private String address;
+	// 经度
 	private String longitude;
+	// 维度
 	private String latitude;
+	// 总结
 	private String summary;
+	// 是否有分店
 	private boolean branch;
+	// 数据来源
+	private String url;
 
 	public String getId() {
 		return id;
@@ -96,5 +107,13 @@ public class Restaurant {
 
 	public void setBranch(boolean branch) {
 		this.branch = branch;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
