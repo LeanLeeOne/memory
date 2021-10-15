@@ -4,6 +4,7 @@ import ViewUI from 'view-design';
 import BaiduMap from 'vue-baidu-map'
 import axios from 'axios'
 import qs from 'qs'
+import moment from 'moment'
 import App from './App.vue';
 import Index from "@/components/Index";
 import Notes from "@/components/Notes";
@@ -12,6 +13,8 @@ import Wechat from "@/components/Wechat";
 
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
+Vue.prototype.$moment = moment;
+
 
 Vue.use(VueRouter);
 Vue.use(ViewUI);

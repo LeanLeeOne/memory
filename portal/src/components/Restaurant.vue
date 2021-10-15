@@ -6,8 +6,8 @@
          :title="url"
       >{{name}}</a>
     </div>
-    <div class="total">￥{{total}}，{{guests}}人，人均: ￥{{avg}}</div>
-    <div class="timestamp">{{timestamp}}</div>
+    <div class="total"><span class="total">￥{{total}}</span> / {{guests}}人=￥{{avg}}</div>
+    <div class="timestamp">{{ $moment(timestamp).format("YYYY-MM-DD")}}</div>
     <div class="address"><i class="iconfont icon-"></i>{{address}}</div>
     <div class="summary">{{summary}}</div>
     <div class="tag"></div>
@@ -43,7 +43,7 @@ export default {
   color: #333;
   width: 300px;
   background-color: #fff3;
-  margin-bottom: 5px;
+  margin-top: 5px;
   border-top: 3px solid #09bb07;
   padding: 3px 5px;
   font-size: 14px;
@@ -64,13 +64,21 @@ export default {
   font-size: 18px;
   margin-bottom: 5px;
 }
+.name a {
+  color: #333;;
+  text-decoration: none;
+}
 .name a:hover {
   color: #09bb07;
   cursor: pointer;
+}
+span.total {
+  font-size: 18px;
 }
 .timestamp,
 .address {
   color: #888;
   font-size: 14px;
+  line-height: 16px;
 }
 </style>
