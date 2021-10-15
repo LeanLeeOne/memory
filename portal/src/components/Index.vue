@@ -3,7 +3,8 @@
     <img class="moon" alt="Moon" src="../assets/moon.png">
     <MoonBack v-if="enough"></MoonBack>
     <h1 hidden>{{ msg }}</h1>
-    <input placeholder="搜索框" hidden>
+    <label for="search"></label>
+    <input id="search" placeholder="搜索框" hidden>
     <ul>
       <li>
         <a href="http://leanlee.top/notes/index"
@@ -133,10 +134,6 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  -webkit-transition: color .25s ease-out .1s;
-  -moz-transition: color .25s ease-out .1s;
-  -o-transition: color .25s ease-out .1s;
-  -ms-transition: color .25s ease-out .1s;
   transition: color .25s ease-out .1s;
   text-shadow: 2px 2px 4px #00000070;
 }
