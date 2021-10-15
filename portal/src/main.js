@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import ViewUI from 'view-design';
 import BaiduMap from 'vue-baidu-map'
 import axios from 'axios'
 import qs from 'qs'
@@ -13,6 +14,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
 
 Vue.use(VueRouter);
+Vue.use(ViewUI);
 Vue.use(BaiduMap, {
   ak: 'M076MNMLZmNDOlsP1vsDkKTNSjn3qBgt'
 });
@@ -71,7 +73,7 @@ router.beforeEach((to, from, next) => {
 });
 
 
-// axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/api';
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 参数格式转换
