@@ -44,7 +44,7 @@ export default {
   width: 250px;
   background-color: #fff3;
   margin-top: 5px;
-  border-top: 3px solid #09bb07;
+  border-bottom: 3px solid #09bb07;
   padding: 3px 5px;
   font-size: 14px;
   text-align: left;

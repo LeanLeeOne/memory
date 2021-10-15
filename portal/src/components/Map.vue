@@ -12,7 +12,7 @@
                   :offset="label.offset"/>
       </bm-marker>
     </baidu-map>
-    <div class="list">
+    <div class="left-panel">
       <div class="menu">
         <Button type="success"
                 @click="collapse"
@@ -26,18 +26,20 @@
                 @click="resetMap">重置地图
         </Button>
       </div>
-      <Restaurant v-for="(r, i) in restaurants" :key="'r-'+r.id"
-                  :index="i"
-                  :name="r.name"
-                  :total="r.total*1"
-                  :guests="r.guests"
-                  :timestamp="r.timestamp"
-                  :address="r.address"
-                  :summary="r.summary"
-                  :url="r.url"
-                  v-show="!isCollapse"
-                  @click.native="setCenter(r.longitude, r.latitude)">
-      </Restaurant>
+      <div class="list">
+        <Restaurant v-for="(r, i) in restaurants" :key="'r-'+r.id"
+                    :index="i"
+                    :name="r.name"
+                    :total="r.total*1"
+                    :guests="r.guests"
+                    :timestamp="r.timestamp"
+                    :address="r.address"
+                    :summary="r.summary"
+                    :url="r.url"
+                    v-show="!isCollapse"
+                    @click.native="setCenter(r.longitude, r.latitude)">
+        </Restaurant>
+      </div>
     </div>
   </div>
 </template>
@@ -119,13 +121,27 @@ export default {
   width: 100%;
   height: 100%;
 }
-.list {
+.left-panel {
+  height: calc(100% - 170px);
   position: absolute;
   top: 1em;
   left: 1em;
   text-align: left;
 }
+.list {
+  height: 100%;
+  overflow-y: scroll;
+}
 .menu button:nth-child(3) {
   margin-left: 3px;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 16px;
+  background-color: #0002;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #1296db;
 }
 </style>
