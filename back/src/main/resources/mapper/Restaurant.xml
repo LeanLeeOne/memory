@@ -12,13 +12,9 @@
                 id = #{id}
             </if>
         </where>
-        <if test="rows != null and rows != ''">
-            LIMIT #{rows}
-        </if>
-        <if test="offset != null and offset != ''">
-            OFFSET #{offset}
-        </if>
         ORDER BY t.timestamp DESC
+        LIMIT #{limit}
+        OFFSET #{offset}
     </select>
 
     <select id="sites" resultType="com.leanlee.memory.back.entity.Site">

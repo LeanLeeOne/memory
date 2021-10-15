@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface RestaurantMapper {
 
-	List<Restaurant> query(String id, String rows, String offset);
+	List<Restaurant> query(String id, int offset, int limit);
 
 	List<Site> sites();
 }

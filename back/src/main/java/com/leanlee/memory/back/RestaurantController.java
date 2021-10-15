@@ -23,8 +23,8 @@ public class RestaurantController {
 	private RestaurantMapper service;
 
 	@RequestMapping("/query/")
-	public List<Restaurant> query(@RequestParam(name = "id", required = false) String id, @RequestParam(name = "false", required = false) String rows, @RequestParam(name = "offset", required = false) String offset){
-		return service.query(id, rows, offset);
+	public List<Restaurant> query(@RequestParam(name = "id", required = false) String id, @RequestParam(name = "offset", defaultValue = "0") int offset, @RequestParam(name = "limit", defaultValue = "10") int limit) {
+		return service.query(id, offset, limit);
 	}
 
 	@RequestMapping("/sites/")
