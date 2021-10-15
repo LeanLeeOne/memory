@@ -53,7 +53,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
-  if (to.path == "/") {
+  if (to.path === "/") {
     Time_Waits_For_No_Oen();
   } else if (to.meta.title) {
     document.title = "檬胧 | " + to.meta.title;
@@ -61,7 +61,7 @@ router.beforeEach((to, from, next) => {
 
   // 日出
   let style = document.getElementById("app").style;
-  if (to.path == "/notes") {
+  if (to.path === "/notes") {
     style.backgroundColor = "#666";
   } else {
     style.backgroundColor = "black";
@@ -75,7 +75,7 @@ router.beforeEach((to, from, next) => {
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 参数格式转换
-  if (config.method == "post") {
+  if (config.method === "post") {
     config.data = qs.stringify(config.data);
   }
   return config;
