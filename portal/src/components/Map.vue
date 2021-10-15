@@ -13,7 +13,7 @@
                   :index="i"
                   :name="r.name"
                   :total="r.total*1"
-                  :guests="r.guests*1"
+                  :guests="r.guests"
                   :timestamp="r.timestamp"
                   :address="r.address"
                   :summary="r.summary"

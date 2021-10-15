@@ -13,7 +13,7 @@ public class Restaurant {
 	// 花费
 	private String total;
 	// 就餐人数
-	private String guests;
+	private int guests;
 	// 时间
 	private String timestamp;
 	// 地址
@@ -53,11 +53,11 @@ public class Restaurant {
 		this.total = total;
 	}
 
-	public String getGuests() {
+	public int getGuests() {
 		return guests;
 	}
 
-	public void setGuests(String guests) {
+	public void setGuests(int guests) {
 		this.guests = guests;
 	}
 
