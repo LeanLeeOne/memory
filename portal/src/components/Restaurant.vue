@@ -41,7 +41,7 @@ export default {
 <style scoped>
 .item {
   color: #333;
-  width: 300px;
+  width: 250px;
   background-color: #fff3;
   margin-top: 5px;
   border-top: 3px solid #09bb07;
@@ -51,10 +51,10 @@ export default {
   backdrop-filter: blur(10px);
 }
 .index {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background-color: #3e75c3;
+  background-color: #1296db;
   color: white;
   display: inline-block;
   text-align: center;
