@@ -1,9 +1,10 @@
 package com.leanlee.memory.back.entity;
 
 /**
- * @description: 饭店信息
- * @author: Lean
- * @create: 2021-10-14 16:58
+ * 饭店信息
+ *
+ * @author Lean
+ * @since 2021-10-14 16:58
  **/
 public class Restaurant {
 
