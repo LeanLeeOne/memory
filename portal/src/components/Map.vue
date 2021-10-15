@@ -10,8 +10,13 @@
     </baidu-map>
     <div class="list">
       <Restaurant v-for="(r, i) in restaurants" :key="'r-'+r.id"
-                  :r="r"
-                  :index="i">
+                  :index="i"
+                  :name="r.name"
+                  :total="r.total*1"
+                  :guests="r.guests*1"
+                  :timestamp="r.timestamp"
+                  :address="r.address"
+                  :summary="r.summary">
       </Restaurant>
     </div>
   </div>

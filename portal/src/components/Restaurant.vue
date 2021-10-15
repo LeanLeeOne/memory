@@ -1,10 +1,10 @@
 <template>
   <div class="item">
-    <div class="name"><span class="index">{{index+1}}</span>{{r.name}}</div>
-    <div class="total">￥{{r.total}}, {{r.guests}}人，人均：￥{{avg}}</div>
-    <div class="timestamp">{{r.timestamp}}</div>
-    <div class="address" todo="地址改为图标">地址：{{r.address}}</div>
-    <div class="summary">{{r.summary}}</div>
+    <div class="name"><span class="index">{{index+1}}</span>{{name}}</div>
+    <div class="total">￥{{total}}，{{guests}}人，人均: ￥{{avg}}</div>
+    <div class="timestamp">{{timestamp}}</div>
+    <div class="address"><i class="iconfont icon-"></i>{{address}}</div>
+    <div class="summary">{{summary}}</div>
     <div class="tag"></div>
   </div>
 </template>
@@ -12,14 +12,22 @@
 <script>
 export default {
   name: "Restaurant",
-  props: ["r", "index"],
+  props: {
+    index: Number,
+    name: String,
+    total: Number,
+    guests: Number,
+    timestamp: String,
+    address: String,
+    summary: String
+  },
   data() {
     return {
       avg: 0
     }
   },
   mounted() {
-    this.avg = (this.r.guests / this.r.total).toFixed(0);
+    this.avg = (this.total / this.guests).toFixed(0);
   }
 }
 </script>
@@ -44,6 +52,7 @@ export default {
   color: white;
   display: inline-block;
   text-align: center;
+  margin-right: 3px;
 }
 .name {
   font-size: 18px;
