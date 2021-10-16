@@ -115,6 +115,7 @@ ul {
 li {
   width: 60px;
   height: 60px;
+  margin: 0 10px;
   padding: 10px;
   display: inline-block;
 }
