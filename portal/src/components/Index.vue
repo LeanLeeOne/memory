@@ -7,7 +7,7 @@
     <input id="search" placeholder="搜索框" hidden>
     <ul>
       <li>
-        <a href="http://leanlee.top/notes/index"
+        <a href="http://leanlee.top/notes/"
            class="notes"
            target="_blank"
            rel="noopener">
