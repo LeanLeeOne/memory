@@ -57,7 +57,15 @@
         </a>
       </li>
     </ul>
-    <a class="beian" href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备18052178号</a>
+    <div class="footer">
+      <a class="beian" href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备18052178号</a>
+      <span class="copyright">@2021</span>
+      <a href="http://leanlee.top/resume/"
+         class="resume"
+         rel="noopener">
+        By 李晓辉
+      </a>
+    </div>
   </div>
 </template>
 
@@ -110,7 +118,7 @@ ul {
   margin: 0 calc(50% - 250px);
   padding: 0;
   position: absolute;
-  bottom: 60px;
+  bottom: 120px;
 }
 li {
   width: 60px;
@@ -164,14 +172,21 @@ a.bilibili:hover span,
 a.wechat:hover span {
   font-weight: bold;
 }
-.beian {
+.footer {
   width: 100%;
   height: 1em;
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 0;
+  font-size: 12px;
 }
-.beian:hover {
+.footer a {
+  display: inline-block;
+}
+.footer a:hover {
   color: limegreen;
+}
+.copyright {
+  margin: 0 10px;
 }
 </style>
