@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img src="../assets/wechat.png">
+    <img src="https://img-blog.csdnimg.cn/5805044996b9422394ce833e6a6ac931.png">
   </div>
 </template>
 
