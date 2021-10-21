@@ -49,7 +49,7 @@
           <span>Bilibili</span>
         </a>
       </li>
-      <li>
+      <li v-if="false">
         <a @click="jump2('/wechat')"
            class="wechat">
           <i class="iconfont icon-weixin"></i>
