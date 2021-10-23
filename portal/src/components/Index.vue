@@ -59,7 +59,7 @@
     </ul>
     <div class="footer">
       <a class="beian" href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备18052178号</a>
-      <span class="copyright">@2021</span>
+      <span class="copyright">©2021</span>
       <a href="http://leanlee.top/resume/"
          class="resume"
          rel="noopener">
