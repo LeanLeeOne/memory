@@ -10,6 +10,7 @@ import Index from "@/components/Index";
 import Notes from "@/components/Notes";
 import Map from "@/components/Map";
 import Wechat from "@/components/Wechat";
+import NotFound from "./components/NotFound";
 
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
@@ -52,6 +53,15 @@ const router = new VueRouter({
       meta: {
         title: "微信"
       }
+    },
+    {
+      name: "404",
+      path: "/404",
+      component: NotFound
+    },
+    {
+      path: '*',    // 此处需特别注意至于最底部
+      redirect: '/404'
     }
   ]
 });
