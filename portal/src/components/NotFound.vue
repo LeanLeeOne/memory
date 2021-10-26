@@ -1,7 +1,7 @@
 <template>
   <div class="not-found">
     <h1>
-      <a href="http://leanlee.top/">404 Not Found</a>
+      <a href="http://leanlee.top/" title="返回主页">404 Not Found</a>
     </h1>
     <footer class="footer">
       <a class='beian' href='https://beian.miit.gov.cn/' target='_blank'>鲁ICP备18052178号</a>
