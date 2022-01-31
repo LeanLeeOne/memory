@@ -99,6 +99,12 @@ export default {
           }
         )
         .then(response => {
+          // 不是数组
+          if (!Array.isArray(response.data)) {
+            console.error(response.data);
+            return true;
+          }
+
           this.restaurants = response.data;
         });
     },
@@ -106,6 +112,12 @@ export default {
       this.$axios
         .get("/api/restaurant/sites/")
         .then(response => {
+          // 不是数组
+          if (!Array.isArray(response.data)) {
+            console.error(response.data);
+            return true;
+          }
+
           this.sites = response.data;
         });
     },
