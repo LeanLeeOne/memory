@@ -3,23 +3,24 @@ package com.leanlee.memory.back;
 import com.leanlee.memory.back.entity.Restaurant;
 import com.leanlee.memory.back.entity.Site;
 import com.leanlee.memory.back.mapper.RestaurantMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @description: 点位搜索
- * @author: Lean
- * @create: 2021-10-14 16:58
+ * 点位搜索
+ *
+ * @author Lean
+ * @date 2021-10-14 16:58
  **/
 @RequestMapping("/restaurant")
 @RestController
 public class RestaurantController {
 
-	@Autowired
+	@Resource
 	private RestaurantMapper service;
 
 	@RequestMapping("/query/")
