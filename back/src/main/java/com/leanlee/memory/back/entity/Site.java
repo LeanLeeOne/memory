@@ -1,36 +1,26 @@
 package com.leanlee.memory.back.entity;
 
+import lombok.Data;
+
 /**
- * @description: 精简的点位
- * @author: Lean
- * @create: 2021-10-14 17:32
+ * 精简的点位
+ *
+ * @author Lean
+ * @date 2021-10-14 17:32
  **/
+@Data
 public class Site {
+
 	private String id;
+
+	/**
+	 * 经度
+	 */
 	private String longitude;
+
+	/**
+	 * 纬度
+	 */
 	private String latitude;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-
-	public String getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
 }
