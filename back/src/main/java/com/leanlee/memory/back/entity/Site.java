@@ -16,11 +16,16 @@ public class Site {
 	/**
 	 * 经度
 	 */
-	private String longitude;
+	private String lng;
 
 	/**
 	 * 纬度
 	 */
-	private String latitude;
+	private String lat;
 
+	/**
+	 * 是否有分店
+	 * 无分店用红色图表，有分店用蓝图标
+	 */
+	private Boolean branch;
 }

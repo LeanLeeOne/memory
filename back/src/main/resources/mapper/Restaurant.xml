@@ -75,7 +75,7 @@
     </insert>
 
     <select id="sites" resultType="com.leanlee.memory.back.entity.Site">
-        SELECT id, longitude, latitude
+        SELECT id, longitude AS lng, latitude AS lat, is_branch AS branch
         FROM restaurant
     </select>
 </mapper>

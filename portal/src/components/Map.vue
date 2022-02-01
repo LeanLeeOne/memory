@@ -5,12 +5,19 @@
                :zoom="zoom"
                :scroll-wheel-zoom="true"
                @ready="resetMap">
-      <bm-marker v-for="(r, i) in restaurants" :key="'p-'+r.id"
+      <bm-marker v-for="(r, i) in !this.isCollapse ? this.restaurants : []"
+                 :key="'p-'+r.id"
                  :position="{lng:r.longitude,lat:r.latitude}">
         <bm-label :content="(i+1)+'.'+r.name"
                   :labelStyle="label.style"
                   :offset="label.offset"/>
       </bm-marker>
+      <bm-point-collection
+          :points="sites"
+          shape="BMAP_POINT_SHAPE_CIRCLE"
+          size="BMAP_POINT_SIZE_SMALL"
+          color="red">
+      </bm-point-collection>
     </baidu-map>
     <div class="left-panel">
       <div class="menu">
