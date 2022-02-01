@@ -24,6 +24,11 @@ public class RestaurantController {
 	@Resource
 	private RestaurantMapper service;
 
+	@RequestMapping("/count/")
+	public int count() {
+		return service.count();
+	}
+
 	@RequestMapping("/query/")
 	public List<Restaurant> query(@RequestParam(name = "id", required = false) String id, @RequestParam(name = "offset", defaultValue = "0") int offset, @RequestParam(name = "limit", defaultValue = "10") int limit) {
 		return service.query(id, offset, limit);

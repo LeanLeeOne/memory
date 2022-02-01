@@ -11,6 +11,13 @@ import java.util.List;
 public interface RestaurantMapper {
 
 	/**
+	 * 总数，用于分页
+	 *
+	 * @return 总数
+	 */
+	int count();
+
+	/**
 	 * 查询饭店
 	 *
 	 * @param id     id

@@ -27,8 +27,9 @@
         </Button>
       </div>
       <div class="list">
-        <Restaurant v-for="(r, i) in restaurants" :key="'r-'+r.id"
-                    :index="i"
+        <Restaurant v-for="(r, i) in restaurants"
+                    :key="'r-'+r.id"
+                    :index="page.offset + i"
                     :name="r.name"
                     :total="r.total*1"
                     :guests="r.guests"
@@ -40,6 +41,12 @@
                     @click.native="setCenter(r.longitude, r.latitude)">
         </Restaurant>
       </div>
+      <Spin v-show="page.loading"
+            v-bind:class="{loading: true}"
+            fix>
+      </Spin>
+      <Page :total="page.count"
+            @on-change="changePage"></Page>
     </div>
     <div class="add-item-wrapper">
       <Button type="success"
@@ -90,13 +97,6 @@
           </Input>
         </Form-item>
       </Form>
-      <!--
-          <p>时间</p>
-          <p>地址</p>
-          <p>经度</p>
-          <p>纬度</p>
-          <p>是否有分店</p>
-      -->
     </Modal>
   </div>
 </template>
@@ -111,6 +111,12 @@ export default {
       center: {lng: 0, lat: 0},
       zoom: 3,
       restaurants: [],
+      page: {
+        loading: false,
+        count: 0,
+        offset: 0,
+        size: 10
+      },
       isCollapse: false,
       sites: [],
       label: {
@@ -165,37 +171,52 @@ export default {
       this.center.lat = lat;
       this.zoom = zoom;
     },
-    drawList(offset, limit) { // 最近
-      this.$axios
-        .get("/api/restaurant/query/", {
-            params: {
-              limit: limit,
-              offset: offset
-            }
-          }
-        )
-        .then(response => {
-          // 不是数组
-          if (!Array.isArray(response.data)) {
-            console.error(response.data);
-            return true;
-          }
+    changePage(page) {
+      this.page.loading = true;
 
-          this.restaurants = response.data;
-        });
+      let limit = this.page.size * page;
+      let offset = this.page.size * --page
+      this.page.offset = offset;
+      this.drawList(offset, limit);
+    },
+    drawList(offset, limit) {
+      this.$axios
+          .get("/api/restaurant/count/")
+          .then(response => {
+            this.page.count = response.data;
+          })
+      this.$axios
+          .get("/api/restaurant/query/", {
+                params: {
+                  limit: limit,
+                  offset: offset
+                }
+              }
+          )
+          .then(response => {
+            this.page.loading = false;
+
+            // 不是数组
+            if (!Array.isArray(response.data)) {
+              console.error(response.data);
+              return true;
+            }
+
+            this.restaurants = response.data;
+          });
     },
     drawAllSite() { // 所有点位
       this.$axios
-        .get("/api/restaurant/sites/")
-        .then(response => {
-          // 不是数组
-          if (!Array.isArray(response.data)) {
-            console.error(response.data);
-            return true;
-          }
+          .get("/api/restaurant/sites/")
+          .then(response => {
+            // 不是数组
+            if (!Array.isArray(response.data)) {
+              console.error(response.data);
+              return true;
+            }
 
-          this.sites = response.data;
-        });
+            this.sites = response.data;
+          });
     },
     collapse() {
       this.isCollapse = !this.isCollapse;
@@ -241,6 +262,10 @@ export default {
   top: 1em;
   left: 1em;
   text-align: left;
+}
+.loading {
+  margin-top: 32px;
+  background-color: #fff7;
 }
 .add-item-wrapper {
   width: 32px;
