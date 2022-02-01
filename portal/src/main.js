@@ -85,7 +85,7 @@ router.beforeEach((to, from, next) => {
 });
 
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/';
 axios.defaults.headers.post = {"Content-Type": "application/json;charset=UTF-8"};
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
