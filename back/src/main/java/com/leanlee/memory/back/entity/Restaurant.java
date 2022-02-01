@@ -3,6 +3,8 @@ package com.leanlee.memory.back.entity;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * 饭店信息
  *
@@ -64,5 +66,26 @@ public class Restaurant {
 	 * 数据来源
 	 */
 	private String url;
+
+	/**
+	 * 是否有效
+	 * 默认无效，需审核后生效
+	 */
+	private Boolean valid;
+
+	/**
+	 * 是否逻辑删除
+	 */
+	private Boolean deleted;
+
+	/**
+	 * 创建时间
+	 */
+	private Date createTime;
+
+	/**
+	 * 更新时间
+	 */
+	private Date updateTime;
 
 }

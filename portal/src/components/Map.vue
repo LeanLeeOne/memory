@@ -96,6 +96,13 @@
                  placeholder="请输入总结">
           </Input>
         </Form-item>
+        <!--
+        <p>时间</p>
+        <p>地址</p>
+        <p>经度</p>
+        <p>纬度</p>
+        <p>是否有分店</p>
+        -->
       </Form>
     </Modal>
   </div>
