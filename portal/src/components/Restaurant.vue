@@ -41,7 +41,7 @@ export default {
 <style scoped>
 .item {
   color: #333;
-  width: 250px;
+  width: 270px;
   background-color: #fff3;
   margin-top: 5px;
   border-bottom: 3px solid #09bb07;
@@ -51,8 +51,8 @@ export default {
   backdrop-filter: blur(10px);
 }
 .index {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: #1296db;
   color: white;
@@ -62,7 +62,7 @@ export default {
 }
 .name {
   font-size: 18px;
-  margin-bottom: 5px;
+  line-height: 20px;
 }
 .name a {
   color: #333;;
@@ -72,13 +72,14 @@ export default {
   color: #09bb07;
   cursor: pointer;
 }
-span.total {
-  font-size: 18px;
+span.total,
+div.summary {
+  line-height: 1em;
 }
 .timestamp,
 .address {
   color: #888;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 14px;
 }
 </style>
