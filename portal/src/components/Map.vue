@@ -33,7 +33,8 @@
                 @click="resetMap">重置地图
         </Button>
       </div>
-      <div class="list">
+      <div class="list"
+           v-show="!isCollapse">
         <Restaurant v-for="(r, i) in restaurants"
                     :key="'r-'+r.id"
                     :index="page.offset + i"
@@ -44,7 +45,6 @@
                     :address="r.address"
                     :summary="r.summary"
                     :url="r.url"
-                    v-show="!isCollapse"
                     @click.native="setCenter(r.longitude, r.latitude)">
         </Restaurant>
       </div>
@@ -53,7 +53,9 @@
             fix>
       </Spin>
       <Page :total="page.count"
-            @on-change="changePage"></Page>
+            v-show="!isCollapse"
+            @on-change="changePage">
+      </Page>
     </div>
     <div class="add-item-wrapper">
       <Button type="success"
@@ -296,7 +298,7 @@ export default {
   height: 100%;
 }
 .left-panel {
-  height: calc(100% - 170px);
+  height: calc(100% - 150px);
   position: absolute;
   top: 1em;
   left: 1em;
@@ -315,6 +317,7 @@ export default {
 }
 .list {
   height: 100%;
+  margin-bottom: 1em;
   overflow-y: scroll;
 }
 .menu button:nth-child(3) {
