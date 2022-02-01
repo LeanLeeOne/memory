@@ -10,7 +10,7 @@
     </select>
 
     <select id="query" resultType="com.leanlee.memory.back.entity.Restaurant">
-        SELECT id, name, total, guests, timestamp, address, longitude, latitude, summary, branch, url
+        SELECT id, name, total, guests, timestamp, address, longitude, latitude, summary, is_branch AS branch, url
         FROM restaurant t
         <where>
             <if test="id != null and id != ''">
@@ -45,7 +45,7 @@
                 summary,
             </if>
             <if test="branch != null and branch != ''">
-                branch,
+                is_branch,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
