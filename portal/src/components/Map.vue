@@ -224,7 +224,7 @@ export default {
           .get("/api/restaurant/count/")
           .then(response => {
             this.page.count = response.data;
-          })
+          });
       this.$axios
           .get("/api/restaurant/query/", {
                 params: {
@@ -273,6 +273,7 @@ export default {
           this.addRestaurant(() => {
             this.hideAddRestaurantView();
             this.$Message.success('提交成功!');
+            this.initAddRestaurantModel();
           });
         } else {
           this.$Message.error('表单验证失败!');
@@ -287,6 +288,18 @@ export default {
             response.data;
             callback();
           });
+    },
+    initAddRestaurantModel() {
+      this.addRestaurantModel.url = "";
+      this.addRestaurantModel.name = "";
+      this.addRestaurantModel.total = "";
+      this.addRestaurantModel.guests = 3;
+      this.addRestaurantModel.timestamp = null;
+      this.addRestaurantModel.address = null;
+      this.addRestaurantModel.longitude = null;
+      this.addRestaurantModel.latitude = null;
+      this.addRestaurantModel.branch = 0;
+      this.addRestaurantModel.summary = "";
     }
   }
 }
