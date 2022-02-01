@@ -17,6 +17,58 @@
         OFFSET #{offset}
     </select>
 
+    <insert id="add" parameterType="com.leanlee.memory.back.entity.Restaurant">
+        INSERT INTO restaurant
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            name,
+            total,
+            guests,
+            url,
+            <if test="timestamp != null and timestamp != ''">
+                timestamp,
+            </if>
+            <if test="address != null and address != ''">
+                address,
+            </if>
+            <if test="longitude != null and longitude != ''">
+                longitude,
+            </if>
+            <if test="latitude != null and latitude != ''">
+                latitude,
+            </if>
+            <if test="summary != null and summary != ''">
+                summary,
+            </if>
+            <if test="branch != null and branch != ''">
+                branch,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{name},
+            #{total},
+            #{guests},
+            #{url},
+            <if test="timestamp != null and timestamp != ''">
+                #{timestamp},
+            </if>
+            <if test="address != null and address != ''">
+                #{address},
+            </if>
+            <if test="longitude != null and longitude != ''">
+                #{longitude},
+            </if>
+            <if test="latitude != null and latitude != ''">
+                #{latitude},
+            </if>
+            <if test="summary != null and summary != ''">
+                #{summary},
+            </if>
+            <if test="branch != null and branch != ''">
+                #{branch},
+            </if>
+        </trim>
+    </insert>
+
     <select id="sites" resultType="com.leanlee.memory.back.entity.Site">
         SELECT id, longitude, latitude
         FROM restaurant

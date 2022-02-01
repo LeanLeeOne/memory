@@ -41,6 +41,63 @@
         </Restaurant>
       </div>
     </div>
+    <div class="add-item-wrapper">
+      <Button type="success"
+              shape="circle"
+              icon="ios-add"
+              @click="showAddRestaurantView">
+      </Button>
+    </div>
+    <Modal
+        v-model="addRestaurantView"
+        title="饭店信息"
+        :loading="true"
+        ok-text="增加"
+        @on-ok="validateRestaurant('addRestaurantModel')"
+        @on-cancel="hideAddRestaurantView">
+      <Form
+          ref="addRestaurantModel"
+          :model="addRestaurantModel"
+          :rules="addRestaurantRule"
+          :label-width="80">
+        <Form-item label="视频地址" prop="url">
+          <Input v-model="addRestaurantModel.url"
+                 placeholder="请输入视频地址">
+          </Input>
+        </Form-item>
+        <Form-item label="饭店名" prop="name">
+          <Input v-model="addRestaurantModel.name"
+                 placeholder="请输入饭店名">
+          </Input>
+        </Form-item>
+        <Form-item label="花费" prop="total">
+          <Input v-model="addRestaurantModel.total"
+                 placeholder="请输入花费">
+          </Input>
+        </Form-item>
+        <Form-item label="就餐人数" prop="guests">
+          <Input v-model="addRestaurantModel.guests"
+                 placeholder="请选择人数">
+          </Input>
+          <Slider v-model="addRestaurantModel.guests"
+                  show-stops
+                  :max="10">
+          </Slider>
+        </Form-item>
+        <Form-item label="总结" prop="summary">
+          <Input v-model="addRestaurantModel.summary"
+                 placeholder="请输入总结">
+          </Input>
+        </Form-item>
+      </Form>
+      <!--
+          <p>时间</p>
+          <p>地址</p>
+          <p>经度</p>
+          <p>纬度</p>
+          <p>是否有分店</p>
+      -->
+    </Modal>
   </div>
 </template>
 
@@ -65,6 +122,25 @@ export default {
           width: -3,
           height: -30
         }
+      },
+      addRestaurantView: false,
+      addRestaurantModel: {
+        url: "",
+        name: "",
+        total: "",
+        guests: 3,
+        summary: ""
+      },
+      addRestaurantRule: {
+        url: [
+          {required: true, message: '视频链接不能为空', trigger: 'blur'}
+        ],
+        name: [
+          {required: true, message: '饭店名不能为空', trigger: 'blur'}
+        ],
+        total: [
+          {required: true, message: '总计花费不能为空', trigger: 'blur'}
+        ],
       }
     }
   },
@@ -123,6 +199,32 @@ export default {
     },
     collapse() {
       this.isCollapse = !this.isCollapse;
+    },
+    showAddRestaurantView() {
+      this.addRestaurantView = true;
+    },
+    hideAddRestaurantView() {
+      this.addRestaurantView = false;
+    },
+    validateRestaurant(name) {
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.addRestaurant(() => {
+            this.hideAddRestaurantView();
+            this.$Message.success('提交成功!');
+          });
+        } else {
+          this.$Message.error('表单验证失败!');
+        }
+      })
+    },
+    addRestaurant(callback) {
+      this.$axios
+          .post("/api/restaurant/add/", this.addRestaurantModel)
+          .then(response => {
+            response.data;
+            callback();
+          });
     }
   }
 }
@@ -139,6 +241,13 @@ export default {
   top: 1em;
   left: 1em;
   text-align: left;
+}
+.add-item-wrapper {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
 }
 .list {
   height: 100%;
