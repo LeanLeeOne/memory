@@ -66,7 +66,7 @@
           ref="addRestaurantModel"
           :model="addRestaurantModel"
           :rules="addRestaurantRule"
-          :label-width="80">
+          :label-width="100">
         <Form-item label="视频地址" prop="url">
           <Input v-model="addRestaurantModel.url"
                  placeholder="请输入视频地址">
@@ -77,9 +77,9 @@
                  placeholder="请输入饭店名">
           </Input>
         </Form-item>
-        <Form-item label="花费" prop="total">
+        <Form-item label="消费金额" prop="total">
           <Input v-model="addRestaurantModel.total"
-                 placeholder="请输入花费">
+                 placeholder="请输入消费金额">
           </Input>
         </Form-item>
         <Form-item label="就餐人数" prop="guests">
@@ -90,6 +90,32 @@
                   show-stops
                   :max="10">
           </Slider>
+        </Form-item>
+        <Form-item label="探店时间" prop="timestamp">
+          <Input v-model="addRestaurantModel.timestamp"
+                 placeholder="请输入探店时间">
+          </Input>
+        </Form-item>
+        <Form-item label="地址" prop="address">
+          <Input v-model="addRestaurantModel.address"
+                 placeholder="请输入地址">
+          </Input>
+        </Form-item>
+        <Form-item label="经度" prop="longitude">
+          <Input v-model="addRestaurantModel.longitude"
+                 placeholder="请输入经度">
+          </Input>
+        </Form-item>
+        <Form-item label="纬度" prop="latitude">
+          <Input v-model="addRestaurantModel.latitude"
+                 placeholder="请输入纬度">
+          </Input>
+        </Form-item>
+        <Form-item label="是否有分店" prop="branch">
+          <Radio-group v-model="addRestaurantModel.branch">
+            <Radio :label="0">否</Radio>
+            <Radio :label="1">是</Radio>
+          </Radio-group>
         </Form-item>
         <Form-item label="总结" prop="summary">
           <Input v-model="addRestaurantModel.summary"
@@ -135,6 +161,11 @@ export default {
         name: "",
         total: "",
         guests: 3,
+        timestamp: null,
+        address: null,
+        longitude: null,
+        latitude: null,
+        branch: 0,
         summary: ""
       },
       addRestaurantRule: {
@@ -240,6 +271,7 @@ export default {
       })
     },
     addRestaurant(callback) {
+      this.addRestaurantModel.branch = !!this.addRestaurantModel.branch;
       this.$axios
           .post("/api/restaurant/add/", this.addRestaurantModel)
           .then(response => {
