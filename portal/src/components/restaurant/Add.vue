@@ -59,7 +59,8 @@
           </Col>
           <Col span="5" offset="1">
             <Input v-model="region"
-                   placeholder="行政区划">
+                   placeholder="行政区划"
+                   @on-blur="searchByName">
             </Input>
           </Col>
         </Row>
