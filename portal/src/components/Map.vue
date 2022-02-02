@@ -64,7 +64,7 @@
     <div class="add-item-wrapper">
       <Button type="success"
               shape="circle"
-              icon="ios-add"
+              icon="md-add"
               @click="showAddRestaurantView">
       </Button>
     </div>
