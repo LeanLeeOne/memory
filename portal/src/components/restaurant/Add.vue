@@ -28,6 +28,12 @@
                placeholder="请输入消费金额">
         </Input>
       </Form-item>
+      <Form-item label="探店时间"
+                 prop="timestamp">
+        <Input v-model="addRestaurantModel.timestamp"
+               placeholder="请输入探店时间">
+        </Input>
+      </Form-item>
       <Form-item label="就餐人数"
                  prop="guests">
         <Input v-model="addRestaurantModel.guests"
@@ -38,12 +44,6 @@
                 :min="1"
                 :max="10">
         </Slider>
-      </Form-item>
-      <Form-item label="探店时间"
-                 prop="timestamp">
-        <Input v-model="addRestaurantModel.timestamp"
-               placeholder="请输入探店时间">
-        </Input>
       </Form-item>
       <Form-item label="地址">
         <Row>
@@ -115,6 +115,9 @@ export default {
         ],
         total: [
           {required: true, message: '总计花费不能为空', trigger: 'blur'}
+        ],
+        timestamp: [
+          {required: true, message: '探店时间不能为空', trigger: 'blur'}
         ],
       }
     }
