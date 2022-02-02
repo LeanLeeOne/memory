@@ -66,7 +66,7 @@
       </Form-item>
       <Form-item label="是否有分店"
                  prop="branch">
-        <Radio-group v-model="branch">
+        <Radio-group v-model="addRestaurantModel.branch">
           <Radio :label="0">否</Radio>
           <Radio :label="1">是</Radio>
         </Radio-group>
@@ -93,7 +93,6 @@ export default {
       select: "",
       region: "北京",
       sites: [],
-      branch: 0,
       addRestaurantModel: {
         url: "",
         name: "",
@@ -103,7 +102,7 @@ export default {
         address: "",
         longitude: "",
         latitude: "",
-        branch: false,
+        branch: 0,
         summary: ""
       },
       addRestaurantRule: {
@@ -155,6 +154,10 @@ export default {
           });
     },
     selectSite(index) {
+      if (index === undefined) {
+        return;
+      }
+
       let site = this.sites[index];
       this.addRestaurantModel.address = site.address;
       this.addRestaurantModel.longitude = site.location.lng;
@@ -174,28 +177,27 @@ export default {
       })
     },
     addRestaurant(callback) {
-      this.prepareProcess();
+      let data = this.prepareProcess();
       this.$axios
-          .post("/api/restaurant/add/", this.addRestaurantModel)
+          .post("/api/restaurant/add/", data)
           .then(response => {
             response.data;
             callback();
           });
     },
     prepareProcess() {
-      this.addRestaurantModel.name = this.addRestaurantModel.name.trim();
-      this.addRestaurantModel.total = this.addRestaurantModel.total.trim();
-      this.addRestaurantModel.timestamp = this.addRestaurantModel.timestamp.trim();
-      this.addRestaurantModel.longitude = this.addRestaurantModel.longitude.trim();
-      this.addRestaurantModel.latitude = this.addRestaurantModel.latitude.trim();
-      this.addRestaurantModel.summary = this.addRestaurantModel.summary.trim();
-
-      this.addRestaurantModel.branch = !!this.branch;
-
-      let url = this.addRestaurantModel.url;
-      if (url.indexOf("?spm_id_from=333.999.0.0") > -1) {
-        this.addRestaurantModel.url = url.replace("?spm_id_from=333.999.0.0", "");
-      }
+      return {
+        url: this.addRestaurantModel.url.split("?")[0],
+        name: this.addRestaurantModel.name.trim(),
+        total: this.addRestaurantModel.total.trim(),
+        guests: this.addRestaurantModel.guests,
+        timestamp: this.addRestaurantModel.timestamp.trim(),
+        address: this.addRestaurantModel.address.trim(),
+        longitude: this.addRestaurantModel.longitude,
+        latitude: this.addRestaurantModel.latitude,
+        branch: !!this.branch,
+        summary: this.addRestaurantModel.summary.trim(),
+      };
     },
     initAddRestaurantModel() {
       this.addRestaurantModel.url = "";
@@ -206,11 +208,10 @@ export default {
       this.addRestaurantModel.address = "";
       this.addRestaurantModel.longitude = "";
       this.addRestaurantModel.latitude = "";
-      this.addRestaurantModel.branch = false;
+      this.addRestaurantModel.branch = 0;
       this.addRestaurantModel.summary = "";
-      this.select = null;
+      this.select = "";
       this.sites = [];
-      this.branch = 0;
     },
   }
 }
