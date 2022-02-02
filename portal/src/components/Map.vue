@@ -17,6 +17,11 @@
                            size="BMAP_POINT_SIZE_SMALL"
                            color="red">
       </bm-point-collection>
+      <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+      <bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
+                      :showAddressBar="true"
+                      :autoLocation="true">
+      </bm-geolocation>
     </baidu-map>
     <div class="left-panel">
       <div class="menu">
@@ -334,8 +339,8 @@ export default {
   width: 32px;
   height: 32px;
   position: absolute;
-  bottom: 1em;
-  right: 1em;
+  bottom: 30px;
+  right: 55px;
 }
 .list {
   height: 100%;
