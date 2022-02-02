@@ -41,7 +41,7 @@ export default {
 <style scoped>
 .item {
   color: #333;
-  width: 270px;
+  width: 100%;
   background-color: #fff3;
   margin-top: 5px;
   border-bottom: 3px solid #09bb07;
