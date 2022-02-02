@@ -18,7 +18,8 @@
       <Form-item label="饭店名"
                  prop="name">
         <Input v-model="addRestaurantModel.name"
-               placeholder="请输入饭店名">
+               placeholder="请输入饭店名"
+               @on-blur="searchByName">
         </Input>
       </Form-item>
       <Form-item label="消费金额"
@@ -44,23 +45,24 @@
                placeholder="请输入探店时间">
         </Input>
       </Form-item>
-      <Form-item label="地址"
-                 prop="address">
-        <Input v-model="addRestaurantModel.address"
-               placeholder="请输入地址">
-        </Input>
-      </Form-item>
-      <Form-item label="经度"
-                 prop="longitude">
-        <Input v-model="addRestaurantModel.longitude"
-               placeholder="请输入经度">
-        </Input>
-      </Form-item>
-      <Form-item label="纬度"
-                 prop="latitude">
-        <Input v-model="addRestaurantModel.latitude"
-               placeholder="请输入纬度">
-        </Input>
+      <Form-item label="地址">
+        <Row>
+          <Col span="18">
+            <Select v-model="select"
+                    @on-change="selectSite">
+              <Option v-for="(site, i) in sites"
+                      :key="site.uid"
+                      :value="i">
+                {{ site.name }} @ {{ site.address }}
+              </Option>
+            </Select>
+          </Col>
+          <Col span="5" offset="1">
+            <Input v-model="region"
+                   placeholder="行政区划">
+            </Input>
+          </Col>
+        </Row>
       </Form-item>
       <Form-item label="是否有分店"
                  prop="branch">
@@ -88,6 +90,9 @@ export default {
   data() {
     return {
       addRestaurantView: false,
+      select: "",
+      region: "北京",
+      sites: [],
       addRestaurantModel: {
         url: "",
         name: "",
@@ -123,6 +128,34 @@ export default {
       this.addRestaurantView = false;
       this.$emit("hide", false);
     },
+    searchByName() {
+      if (!this.addRestaurantModel.name) {
+        return;
+      }
+      this.$axios
+          .get("/api/restaurant/search/", {
+            params: {
+              name: this.addRestaurantModel.name,
+              region: this.region
+            }
+          })
+          .then(response => {
+            let result = response.data.results;
+            // 不是数组
+            if (!Array.isArray(result)) {
+              console.error(result);
+              return true;
+            }
+
+            this.sites = result;
+          });
+    },
+    selectSite(index) {
+      let site = this.sites[index];
+      this.addRestaurantModel.address = site.address;
+      this.addRestaurantModel.longitude = site.location.lng;
+      this.addRestaurantModel.latitude = site.location.lat;
+    },
     validateRestaurant(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
@@ -156,7 +189,9 @@ export default {
       this.addRestaurantModel.latitude = null;
       this.addRestaurantModel.branch = 0;
       this.addRestaurantModel.summary = "";
-    }
+      this.select = null;
+      this.sites = [];
+    },
   }
 }
 </script>
