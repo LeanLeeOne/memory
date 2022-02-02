@@ -66,7 +66,7 @@
       </Form-item>
       <Form-item label="是否有分店"
                  prop="branch">
-        <Radio-group v-model="addRestaurantModel.branch">
+        <Radio-group v-model="branch">
           <Radio :label="0">否</Radio>
           <Radio :label="1">是</Radio>
         </Radio-group>
@@ -93,6 +93,7 @@ export default {
       select: "",
       region: "北京",
       sites: [],
+      branch: 0,
       addRestaurantModel: {
         url: "",
         name: "",
@@ -170,7 +171,7 @@ export default {
       })
     },
     addRestaurant(callback) {
-      this.addRestaurantModel.branch = !!this.addRestaurantModel.branch;
+      this.addRestaurantModel.branch = !!this.branch;
       this.$axios
           .post("/api/restaurant/add/", this.addRestaurantModel)
           .then(response => {
@@ -191,6 +192,7 @@ export default {
       this.addRestaurantModel.summary = "";
       this.select = null;
       this.sites = [];
+      this.branch = 0;
     },
   }
 }
