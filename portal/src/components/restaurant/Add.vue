@@ -99,11 +99,11 @@ export default {
         name: "",
         total: "",
         guests: 3,
-        timestamp: null,
-        address: null,
-        longitude: null,
-        latitude: null,
-        branch: 0,
+        timestamp: "",
+        address: "",
+        longitude: "",
+        latitude: "",
+        branch: false,
         summary: ""
       },
       addRestaurantRule: {
@@ -171,7 +171,7 @@ export default {
       })
     },
     addRestaurant(callback) {
-      this.addRestaurantModel.branch = !!this.branch;
+      this.prepareProcess();
       this.$axios
           .post("/api/restaurant/add/", this.addRestaurantModel)
           .then(response => {
@@ -179,16 +179,31 @@ export default {
             callback();
           });
     },
+    prepareProcess() {
+      this.addRestaurantModel.name = this.addRestaurantModel.name.trim();
+      this.addRestaurantModel.total = this.addRestaurantModel.total.trim();
+      this.addRestaurantModel.timestamp = this.addRestaurantModel.timestamp.trim();
+      this.addRestaurantModel.longitude = this.addRestaurantModel.longitude.trim();
+      this.addRestaurantModel.latitude = this.addRestaurantModel.latitude.trim();
+      this.addRestaurantModel.summary = this.addRestaurantModel.summary.trim();
+
+      this.addRestaurantModel.branch = !!this.branch;
+
+      let url = this.addRestaurantModel.url;
+      if (url.indexOf("?spm_id_from=333.999.0.0") > -1) {
+        this.addRestaurantModel.url = url.replace("?spm_id_from=333.999.0.0", "");
+      }
+    },
     initAddRestaurantModel() {
       this.addRestaurantModel.url = "";
       this.addRestaurantModel.name = "";
       this.addRestaurantModel.total = "";
       this.addRestaurantModel.guests = 3;
-      this.addRestaurantModel.timestamp = null;
-      this.addRestaurantModel.address = null;
-      this.addRestaurantModel.longitude = null;
-      this.addRestaurantModel.latitude = null;
-      this.addRestaurantModel.branch = 0;
+      this.addRestaurantModel.timestamp = "";
+      this.addRestaurantModel.address = "";
+      this.addRestaurantModel.longitude = "";
+      this.addRestaurantModel.latitude = "";
+      this.addRestaurantModel.branch = false;
       this.addRestaurantModel.summary = "";
       this.select = null;
       this.sites = [];
