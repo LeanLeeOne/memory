@@ -155,7 +155,7 @@ export default {
       zoom: 3,
       restaurants: [],
       page: {
-        loading: false,
+        loading: true,
         count: 0,
         offset: 0,
         size: 10
@@ -319,6 +319,7 @@ export default {
   height: 100%;
 }
 .left-panel {
+  width: 270px;
   height: calc(100% - 150px);
   position: absolute;
   top: 1em;
