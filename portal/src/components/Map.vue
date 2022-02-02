@@ -150,7 +150,7 @@
 </template>
 
 <script>
-import Restaurant from "./restaurant/Restaurant";
+import Restaurant from "./restaurant/Item";
 
 export default {
   name: "Map",
