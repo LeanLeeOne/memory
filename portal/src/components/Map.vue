@@ -39,18 +39,18 @@
       </div>
       <div class="list"
            v-show="!isCollapse">
-        <Restaurant v-for="(r, i) in restaurants"
-                    :key="'r-'+r.id"
-                    :index="page.offset + i"
-                    :name="r.name"
-                    :total="r.total*1"
-                    :guests="r.guests"
-                    :timestamp="r.timestamp"
-                    :address="r.address"
-                    :summary="r.summary"
-                    :url="r.url"
-                    @click.native="setCenter(r.longitude, r.latitude)">
-        </Restaurant>
+        <RestaurantItem v-for="(r, i) in restaurants"
+                        :key="'r-'+r.id"
+                        :index="page.offset + i"
+                        :name="r.name"
+                        :total="r.total*1"
+                        :guests="r.guests"
+                        :timestamp="r.timestamp"
+                        :address="r.address"
+                        :summary="r.summary"
+                        :url="r.url"
+                        @click.native="setCenter(r.longitude, r.latitude)">
+        </RestaurantItem>
       </div>
       <Spin v-show="page.loading"
             v-bind:class="{loading: true}"
@@ -150,7 +150,7 @@
 </template>
 
 <script>
-import Restaurant from "./restaurant/Item";
+import RestaurantItem from "./restaurant/Item";
 
 export default {
   name: "Map",
@@ -204,7 +204,7 @@ export default {
     }
   },
   components: {
-    Restaurant
+    RestaurantItem
   },
   mounted() {
     this.drawList();

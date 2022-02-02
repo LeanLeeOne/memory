@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "Restaurant",
+  name: "RestaurantItem",
   props: {
     index: Number,
     name: String,
