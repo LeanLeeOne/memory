@@ -102,7 +102,7 @@ export default {
         address: "",
         longitude: "",
         latitude: "",
-        branch: 0,
+        branch: 1,
         summary: ""
       },
       addRestaurantRule: {
@@ -208,7 +208,7 @@ export default {
       this.addRestaurantModel.address = "";
       this.addRestaurantModel.longitude = "";
       this.addRestaurantModel.latitude = "";
-      this.addRestaurantModel.branch = 0;
+      this.addRestaurantModel.branch = 1;
       this.addRestaurantModel.summary = "";
       this.select = "";
       this.sites = [];
