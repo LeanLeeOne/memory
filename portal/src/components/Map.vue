@@ -8,7 +8,7 @@
       <bm-marker v-for="(r, i) in !this.isCollapse ? this.restaurants : []"
                  :key="'p-'+r.id"
                  :position="{lng:r.longitude,lat:r.latitude}">
-        <bm-label :content="(i+1)+'.'+r.name"
+        <bm-label :content="(i+1+page.offset)+'.'+r.name"
                   :labelStyle="label.style"
                   :offset="label.offset"/>
       </bm-marker>
