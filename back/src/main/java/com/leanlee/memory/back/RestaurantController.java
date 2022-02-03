@@ -1,8 +1,12 @@
 package com.leanlee.memory.back;
 
+import com.leanlee.memory.back.entity.Operation;
+import com.leanlee.memory.back.entity.OperationLog;
 import com.leanlee.memory.back.entity.Restaurant;
 import com.leanlee.memory.back.entity.Site;
+import com.leanlee.memory.back.mapper.OperationLogMapper;
 import com.leanlee.memory.back.mapper.RestaurantMapper;
+import com.leanlee.memory.back.util.RequestUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
- * 点位搜索
+ * 饭店
  *
  * @author Lean
  * @date 2021-10-14 16:58
@@ -26,28 +32,48 @@ public class RestaurantController {
 	private static final String URL_SEARCH_SITE = "https://api.map.baidu.com/place/v2/search?query={name}&region={region}&output=json&ak=M076MNMLZmNDOlsP1vsDkKTNSjn3qBgt";
 
 	@Resource
-	private RestaurantMapper service;
+	private RestaurantMapper restaurantMapper;
+	@Resource
+	private OperationLogMapper operationLogMapper;
 	@Resource
 	private RestTemplate restTemplate;
 
 	@RequestMapping("/count/")
 	public int count() {
-		return service.count();
+		return restaurantMapper.count();
 	}
 
 	@RequestMapping("/query/")
 	public List<Restaurant> query(@RequestParam(name = "id", required = false) String id, @RequestParam(name = "offset", defaultValue = "0") int offset, @RequestParam(name = "limit", defaultValue = "10") int limit) {
-		return service.query(id, offset, limit);
+		return restaurantMapper.query(id, offset, limit);
 	}
 
 	@RequestMapping("/add/")
-	public int add(@RequestBody Restaurant restaurant) {
-		return service.add(restaurant);
+	public int add(HttpServletRequest request, @RequestBody Restaurant restaurant) throws UnsupportedEncodingException {
+		// 插入饭店
+		int result = restaurantMapper.add(restaurant);
+
+		// 插入操作记录
+		String id = restaurant.getId();
+		String operator = RequestUtils.getCookie(request, "operator");
+		String ip = RequestUtils.getIpAddress(request);
+		String timestamp = RequestUtils.getTimestamp();
+		OperationLog operationLog = OperationLog.builder()
+				.relationId(id)
+				.operator(operator)
+				.operation(Operation.CREATE)
+				.ip(ip)
+				.module(PortalApplication.MODULE_NAME)
+				.timestamp(timestamp)
+				.build();
+		result += operationLogMapper.add(operationLog);
+
+		return result;
 	}
 
 	@RequestMapping("/sites/")
 	public List<Site> sites() {
-		return service.sites();
+		return restaurantMapper.sites();
 	}
 
 	/**

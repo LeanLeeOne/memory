@@ -22,7 +22,7 @@
         OFFSET #{offset}
     </select>
 
-    <insert id="add" parameterType="com.leanlee.memory.back.entity.Restaurant">
+    <insert id="add" parameterType="com.leanlee.memory.back.entity.Restaurant" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO restaurant
         <trim prefix="(" suffix=")" suffixOverrides=",">
             name,

@@ -16,6 +16,8 @@ import javax.annotation.Resource;
 @SpringBootApplication
 public class PortalApplication {
 
+	public static final String MODULE_NAME = "memory_back";
+
 	public static void main(String[] args) {
 		SpringApplication.run(PortalApplication.class, args);
 	}
