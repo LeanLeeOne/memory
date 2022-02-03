@@ -72,8 +72,7 @@ export default {
   color: #09bb07;
   cursor: pointer;
 }
-span.total,
-div.summary {
+span.total {
   line-height: 1em;
 }
 .timestamp,
