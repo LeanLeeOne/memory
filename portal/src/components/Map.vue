@@ -98,7 +98,7 @@ export default {
         loading: true,
         count: 0,
         offset: 0,
-        size: 10
+        limit: 10
       },
       isCollapse: false,
       sites: [],
@@ -141,13 +141,10 @@ export default {
     },
     changePage(page) {
       this.page.loading = true;
-
-      let limit = this.page.size * page;
-      let offset = this.page.size * --page
-      this.page.offset = offset;
-      this.drawList(offset, limit);
+      this.page.offset = this.page.limit * --page
+      this.drawList();
     },
-    drawList(offset, limit) {
+    drawList() {
       this.$axios
           .get("/api/restaurant/count/")
           .then(response => {
@@ -156,8 +153,8 @@ export default {
       this.$axios
           .get("/api/restaurant/query/", {
                 params: {
-                  limit: limit,
-                  offset: offset
+                  limit: this.page.limit,
+                  offset: this.page.offset
                 }
               }
           )
