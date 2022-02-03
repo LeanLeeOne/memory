@@ -4,6 +4,7 @@ import ViewUI from 'view-design';
 import BaiduMap from 'vue-baidu-map'
 import axios from 'axios'
 import moment from 'moment'
+import VueCookies from 'vue-cookies';
 import App from './App.vue';
 import Index from "@/components/Index";
 import Notes from "@/components/Notes";
@@ -18,6 +19,7 @@ Vue.prototype.$moment = moment;
 
 Vue.use(VueRouter);
 Vue.use(ViewUI);
+Vue.use(VueCookies);
 Vue.use(BaiduMap, {
   ak: 'M076MNMLZmNDOlsP1vsDkKTNSjn3qBgt'
 });

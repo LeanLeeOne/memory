@@ -72,6 +72,14 @@
     <RestaurantAdd :show="addRestaurantView"
                    @hide="hideAddRestaurantView">
     </RestaurantAdd>
+    <Modal v-model="addOperatorView"
+           title="增加操作人"
+           ok-text="增加"
+           @on-ok="addOperator">
+      <Input v-model="operator"
+             placeholder="请输入姓名">
+      </Input>
+    </Modal>
   </div>
 </template>
 
@@ -105,6 +113,8 @@ export default {
         }
       },
       addRestaurantView: false,
+      addOperatorView: false,
+      operator: undefined,
     }
   },
   components: {
@@ -180,10 +190,22 @@ export default {
       this.isCollapse = !this.isCollapse;
     },
     showAddRestaurantView() {
+      let operator = this.$cookies.get("operator");
+      if (!operator) {
+        this.addOperatorView = true;
+        return;
+      }
       this.addRestaurantView = true;
     },
     hideAddRestaurantView() {
       this.addRestaurantView = false;
+    },
+    addOperator() {
+      if (!this.operator.trim()) {
+        return;
+      }
+      this.$cookies.set("operator", this.operator, "99y");  // 99年后过期
+      this.addRestaurantView = true;
     },
   }
 }
