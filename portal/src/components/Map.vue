@@ -23,7 +23,8 @@
                       :autoLocation="true">
       </bm-geolocation>
     </baidu-map>
-    <div class="left-panel">
+    <div class="left-panel"
+         v-bind:class="{'only-menu':isCollapse}">
       <div class="menu">
         <Button type="success"
                 @click="collapse"
@@ -200,6 +201,9 @@ export default {
   top: 1em;
   left: 1em;
   text-align: left;
+}
+.only-menu {
+  height: 32px;
 }
 .loading {
   margin-top: 32px;
