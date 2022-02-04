@@ -69,13 +69,21 @@
               @click="showAddRestaurantView">
       </Button>
     </div>
+    <div class="add-item-wrapper operator">
+      <Button type="success"
+              shape="circle"
+              v-show="operator"
+              @click="showOperator">
+        {{ operator.substring(operator.length - 1) }}
+      </Button>
+    </div>
     <RestaurantAdd :show="addRestaurantView"
                    @hide="hideAddRestaurantView">
     </RestaurantAdd>
     <Modal v-model="addOperatorView"
-           title="增加操作人"
-           ok-text="增加"
-           @on-ok="addOperator">
+           :title="addOperator ? '增加操作人' : '修改操作人'"
+           :ok-text="addOperator ? '增加' : '修改'"
+           @on-ok="editOperator">
       <Input v-model="operator"
              placeholder="请输入姓名">
       </Input>
@@ -114,7 +122,8 @@ export default {
       },
       addRestaurantView: false,
       addOperatorView: false,
-      operator: undefined,
+      addOperator: true,
+      operator: "",
     }
   },
   components: {
@@ -122,6 +131,8 @@ export default {
     RestaurantAdd,
   },
   mounted() {
+    this.operator = this.$cookies.get("operator");
+    this.operator || (this.operator = "");
     this.drawList();
     this.drawAllSite();
   },
@@ -197,12 +208,18 @@ export default {
     hideAddRestaurantView() {
       this.addRestaurantView = false;
     },
-    addOperator() {
+    editOperator() {
       if (!this.operator.trim()) {
         return;
       }
       this.$cookies.set("operator", this.operator, "99y");  // 99年后过期
-      this.addRestaurantView = true;
+      this.addOperator && (this.addRestaurantView = true);
+      this.addOperator = true;
+    },
+    showOperator() {
+      this.operator = this.$cookies.get("operator");
+      this.addOperatorView = true;
+      this.addOperator = false;
     },
   }
 }
@@ -234,6 +251,14 @@ export default {
   position: absolute;
   bottom: 30px;
   right: 55px;
+}
+.operator {
+  bottom: 70px;
+  right: 10px;
+}
+.operator > button {
+  width: 32px;
+  padding: 0;
 }
 .list {
   height: 100%;
