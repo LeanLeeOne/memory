@@ -7,6 +7,7 @@ import com.leanlee.memory.back.entity.Site;
 import com.leanlee.memory.back.mapper.OperationLogMapper;
 import com.leanlee.memory.back.mapper.RestaurantMapper;
 import com.leanlee.memory.back.util.RequestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,12 +51,19 @@ public class RestaurantController {
 
 	@RequestMapping("/add/")
 	public int add(HttpServletRequest request, @RequestBody Restaurant restaurant) throws UnsupportedEncodingException {
+		String operator = RequestUtils.getCookie(request, "operator");
+		if (StringUtils.isBlank(operator)) {
+			return -1;
+		}
+
 		// 插入饭店
 		int result = restaurantMapper.add(restaurant);
+		if (result <= 0) {
+			return result;
+		}
 
 		// 插入操作记录
 		String id = restaurant.getId();
-		String operator = RequestUtils.getCookie(request, "operator");
 		String ip = RequestUtils.getIpAddress(request);
 		String timestamp = RequestUtils.getTimestamp();
 		OperationLog operationLog = OperationLog.builder()
@@ -66,9 +74,8 @@ public class RestaurantController {
 				.module(PortalApplication.MODULE_NAME)
 				.timestamp(timestamp)
 				.build();
-		result += operationLogMapper.add(operationLog);
 
-		return result;
+		return operationLogMapper.add(operationLog);
 	}
 
 	@RequestMapping("/sites/")

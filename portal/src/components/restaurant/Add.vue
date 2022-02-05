@@ -182,8 +182,11 @@ export default {
       this.$axios
           .post("/api/restaurant/add/", data)
           .then(response => {
-            response.data;
-            callback();
+            if (response.data > 0) {
+              callback();
+            } else {
+              this.$Message.error('增加失败!');
+            }
           });
     },
     prepareProcess() {
