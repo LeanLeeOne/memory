@@ -207,6 +207,10 @@ export default {
     },
     hideAddRestaurantView() {
       this.addRestaurantView = false;
+
+      // 刷新列表
+      this.drawList();
+      this.drawAllSite();
     },
     editOperator() {
       if (!this.operator.trim()) {
