@@ -231,7 +231,7 @@ export default {
   height: 100%;
 }
 .left-panel {
-  width: 270px;
+  width: 275px;
   height: calc(100% - 150px);
   position: absolute;
   top: 1em;
