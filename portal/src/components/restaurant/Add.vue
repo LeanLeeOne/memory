@@ -28,7 +28,7 @@
                placeholder="请输入消费金额">
         </Input>
       </Form-item>
-      <Form-item label="探店时间"
+      <Form-item label="发布时间"
                  prop="timestamp">
         <Input v-model="addRestaurantModel.timestamp"
                placeholder="请输入探店时间">
