@@ -1,4 +1,4 @@
-package com.leanlee.memory.back;
+package com.leanlee.memory.back.controller;
 
 import com.leanlee.memory.back.entity.OperationLog;
 import com.leanlee.memory.back.mapper.OperationLogMapper;
