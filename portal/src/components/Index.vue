@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img class="moon" alt="Moon" src="https://img-blog.csdnimg.cn/7681c12df0d24ce9bd7338a7dc8363a4.png">
+    <img class="moon" alt="Moon" src="../assets/moon.png">
     <MoonBack v-if="enough"></MoonBack>
     <h1 hidden>{{ msg }}</h1>
     <label for="search"></label>
